@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo - App</title>
+    <!--add stylesheet-->
+    <!--u can also add external stylesheet-->
+    
+</head>
+<body>
+    <div>
+        <h1>Simple DOM ToDo App</h1>
+        <!--<label for="items">Items:</label>--> 
+        <input type="text" id="inputField" placeholder="add items here..">
+        <button class="btn">Add</button>
+        <div class="todoListsElem"></div>
+         <!-- event delegation -->
+    </div>
+    <!--external javascript-->
+    <script>
+        let inputElem = document.getElementById("inputField");
+        let clickBtn = document.querySelector(".btn");
+        let todoElem = document.querySelector(".todoListsElem");
+
+    const addTodo = () => {
+        // append to todo elem 
+        // create a p tag to store the input element 
+        let pElem = document.createElement("p");
+        pElem.textContent = inputElem.value;
+        // append the ptag to the todoElem
+        todoElem.appendChild(pElem);
+        // clear the input field after this
+        inputElem.value="";
+    }
+
+    // now call the function when the button is clicked 
+    clickBtn.addEventListener("click",()=>{
+        addTodo();
+    });
+
+    todoElem.addEventListener("click", (event)=> {
+           let curElem = event.target;
+           curElem.remove();
+        });
+    </script>
+</body>
+</html>
